@@ -1,0 +1,34 @@
+body {
+    background-color: rgb(29, 29, 29);
+}
+
+* {
+    color: rgb(219, 219, 219);
+}
+
+#string {
+    line-height: 160%;
+    border: 1px solid white;
+}
+
+.completedText {
+    color: yellow;
+}
+
+.errorText {
+    color: red;
+}
+
+@keyframes colorChangeToCorrect {
+    0% {
+        color: rgb(219, 219, 219);
+    }
+
+    100% {
+        color: yellow;
+    }
+}
+
+.info {
+    color: rgb(255, 255, 116);
+}
