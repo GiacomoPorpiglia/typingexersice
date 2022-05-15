@@ -26,7 +26,7 @@ app.get('/api/newstring', (req, res) => {
     stringLength = Math.floor(Math.random() * 10 + 20)
 
     for(let i = 0; i < stringLength; i++) {
-        string += arrayOfStrings[Math.floor(Math.random() * arrayOfStrings.length)].slice(0, -1)
+        string += arrayOfStrings[Math.floor(Math.random() * arrayOfStrings.length)]
         if(i != stringLength) string += " "
     }
     res.status(200).json(string)
