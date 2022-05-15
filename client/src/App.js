@@ -3,7 +3,7 @@ import StringParagraph from "./components/StringParagraph";
 import Statistics from "./components/Statistics";
 import React, {useState, useEffect} from "react";
 
-
+import axios from 'axios'
 //--------------------Variables initialization------------------------------------
 
 var string = ""
@@ -52,9 +52,12 @@ const App = () => {
 
     //FETCH THE NEW STRING FROM THE SERVER WHEN THE USER RESTARTS OR WHEN IT ENTERS THE FIRST TIME
     const getNewString = () => {
-        fetch("https://shrouded-crag-16465.herokuapp.com/newstring")
+        return axios.get('/api/newstring')
             .then(res => res.json())
             .then(res => updateStartingString(res.string))
+            .catch(() => {
+                alert('Error retrieving data!!!')
+            })
     }
 
 

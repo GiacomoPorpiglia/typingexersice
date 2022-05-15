@@ -11,12 +11,20 @@ app.use(bodyParser.json({extended: true, limit: "32mb"}))
 app.use(cors())
 
 
+//SERVER PRODUCTOIN ASSESTS
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client/build')))
+    app.get('/*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
 
-app.get('/', (req, res) => {
+
+app.get('/api', (req, res) => {
     res.status(200).send("Working")
 })
 
-app.get('/newstring', (req, res) => {
+app.get('/api/newstring', (req, res) => {
 
     const stringFile = fs.readFileSync("wordsList.txt", 'utf-8')
     arrayOfStrings = stringFile.split('\n')
@@ -33,13 +41,7 @@ app.get('/newstring', (req, res) => {
 })
 
 
-//SERVER PRODUCTOIN ASSESTS
-if(process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"))
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-    })
-}
+
 
 
 
