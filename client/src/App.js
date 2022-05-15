@@ -53,11 +53,8 @@ const App = () => {
     //FETCH THE NEW STRING FROM THE SERVER WHEN THE USER RESTARTS OR WHEN IT ENTERS THE FIRST TIME
     const getNewString = () => {
         return axios.get('/api/newstring')
-            .then(res => res.json())
-            .then(res => updateStartingString(res.string))
-            .catch(() => {
-                alert('Error retrieving data!!!')
-            })
+            .then(res => updateStartingString(res.data))
+            .catch((error) => alert(error.message))
     }
 
 

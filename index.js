@@ -11,13 +11,7 @@ app.use(bodyParser.json({extended: true, limit: "32mb"}))
 app.use(cors())
 
 
-//SERVER PRODUCTOIN ASSESTS
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')))
-    app.get('/*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-    })
-}
+
 
 
 app.get('/api', (req, res) => {
@@ -25,7 +19,6 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/api/newstring', (req, res) => {
-
     const stringFile = fs.readFileSync("wordsList.txt", 'utf-8')
     arrayOfStrings = stringFile.split('\n')
 
@@ -36,12 +29,17 @@ app.get('/api/newstring', (req, res) => {
         string += arrayOfStrings[Math.floor(Math.random() * arrayOfStrings.length)].slice(0, -1)
         if(i != stringLength) string += " "
     }
-
-    res.status(200).json({"string": string})
+    res.status(200).json(string)
 })
 
 
-
+//SERVER PRODUCTOIN ASSESTS
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client/build')))
+    app.get('/*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
 
 
 
