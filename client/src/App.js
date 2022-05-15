@@ -52,7 +52,7 @@ const App = () => {
 
     //FETCH THE NEW STRING FROM THE SERVER WHEN THE USER RESTARTS OR WHEN IT ENTERS THE FIRST TIME
     const getNewString = () => {
-        fetch("http://localhost:5000/newstring")
+        fetch("https://shrouded-crag-16465.herokuapp.com/newstring")
             .then(res => res.json())
             .then(res => updateStartingString(res.string))
     }

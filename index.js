@@ -12,7 +12,6 @@ app.use(cors())
 
 
 
-
 app.get('/', (req, res) => {
     res.status(200).send("Working")
 })
@@ -33,9 +32,10 @@ app.get('/newstring', (req, res) => {
     res.status(200).json({"string": string})
 })
 
+
 //SERVER PRODUCTOIN ASSESTS
 if(process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join("/client/build")))
+    app.use(express.static("client/build"))
     app.get("*", (req, res) => {
         res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
     })
