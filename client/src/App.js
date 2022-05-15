@@ -143,12 +143,20 @@ const App = () => {
       let time = endTime-startTime;
       let inputStringWords = inputString.split(' ')
       let stringWords = string.split(' ')
+      stringWords.pop() // The pop() is because last element is an empty string
       let correctWords = 0;
-      for(let i = 0; i < stringWords.length; i++) {
-          if(stringWords[i] === inputStringWords[i]) {
-              correctWords++;
-          }
+
+
+      for(let i = 0; i < string.length; i++) {
+          let end = i;
+          while(string[end] != ' ' || end == string.length) end++
+          let word = string.slice(i, end);
+          console.log(word, inputString.slice(i, end));
+          if(word == inputString.slice(i, end)) correctWords++
+          i = end++
       }
+       
+      
 
     
       stats.time = Math.round(time/1000);
