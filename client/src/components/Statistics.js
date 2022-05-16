@@ -8,7 +8,7 @@ const Statistics = (props) => {
                     <h3 className="col1 text-center" id="time">Time: {props.stats.time} seconds</h3>
                     <h3 className="col1 text-center" id="totalWords">Total words: {props.stats.totalWords}</h3>
                     <h3 className="col1 text-center" id="correctWords">Correct words: {props.stats.correctWords}</h3>
-                    <h3 className="col1 text-center" id="wpm">Wpm: {props.stats.wpm}</h3>
+                    <h3 className="col1 text-center" id="wpm">Words/min: {props.stats.wpm}</h3>
                     <h3 className="col1 text-center" id="cpm">Characters/min: {props.stats.cpm}</h3>
 
                     <div className="col1 text-center" >

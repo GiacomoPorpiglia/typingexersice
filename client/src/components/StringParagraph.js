@@ -5,7 +5,8 @@ const StringParagraph = ({string, showStatistics}) => {
 
     if(!showStatistics) {
         return (
-            <div>
+            <div id="stringDiv">
+                <br></br>
                 <h4 className="text-center" id="string">{string}</h4>
             </div>
         )
