@@ -23,10 +23,10 @@ app.get('/api/newstring', (req, res) => {
     arrayOfStrings = stringFile.split('\n')
 
     string = ""
-    stringLength = Math.floor(Math.random() * 10 + 20)
+    stringLength = Math.floor(Math.random() * 10 + 15)
 
     for(let i = 0; i < stringLength; i++) {
-        string += arrayOfStrings[Math.floor(Math.random() * arrayOfStrings.length)] // .slice(0, -1) // if you run on local (not on heroku)
+        string += arrayOfStrings[Math.floor(Math.random() * arrayOfStrings.length)].slice(0, -1) // if you run on local (not on heroku)
         if(i != stringLength) string += " "
     }
     res.status(200).json(string)
